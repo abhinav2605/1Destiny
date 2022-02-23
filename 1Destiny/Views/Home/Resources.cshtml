@@ -1,24 +1,70 @@
-﻿
+﻿@model IEnumerable<_1Destiny.Models.DB_Teams>
+
 @{
-    ViewBag.Title = "Resources";
+    ViewBag.Title = "Tools and Resources";
 }
+@*@Html.DropDownList(
+                        new SelectList(Model.TeamName, new SelectList<>),
+                        "Select Team",
+                        new { @class = "form-control" })
+    @Html.DropDownListFor(m => m.TeamName.Select(team => new SelectListItem()
+    {
+        Text = m.TeamName,
+        Value = m.ID
+        //,    Selected = team == Model.TeamName
+    }*@
+@*@Html.DropDownListFor(Model.ToList(), new SelectList(Model, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })*@
+<select style="margin-top: 3%;" class="form-control" id="teams">
+    @foreach (var item in Model)
+    {
+        <option value="@item.ID">@item.TeamName</option>
+    }
 
-<h3>Resources</h3>
+</select>
 
-<button class="button1" style="vertical-align:middle"><span><a href="https://purussvr.fareast.corp.microsoft.com/PurusReview/MyCaseView.aspx?region=ASIA" target="_blank"> Purus </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://aka.ms/onereadiness" target="_blank"> One Readiness </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://contentidea/" target="_blank"> Content Idea </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://office.visualstudio.com/OC" target="_blank"> VSO (Win32) </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://office.visualstudio.com/APEX" target="_blank"> VSO (Apex) </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://portal.microsofticm.com/" target="_blank"> ICM </a></span></button>
-<button class="button1" style="vertical-align:middle"><span><a href="https://microsoft.sharepoint.com/sites/infopedia" target="_blank"> Infopedia (FTE) </a></span></button>
+<br />
+<button class="button1" style="vertical-align:middle">
+    <span>
+        <a id="idtools" href="/Home/Tools?id=1"> Tools </a>
+    </span>
+</button>
+<button class="button1" style="vertical-align:middle">
+    <span>
+        <a id="idRes" href="/Home/Resources1?id=1"> Resources </a>
+    </span>
+</button>
+<button class="button1" style="vertical-align:middle">
+    <span>
+        <a id="idTrain" href="/Home/Training?id=1"> Training videos </a>
+    </span>
+</button>
 
-<button class="button1" style="vertical-align:middle"><span><a href="https://aka.ms/officetweaks" target="_blank"> Office Tweaks</a></span></button>
-<button class="button1" style="vertical-align: middle; background-color: #e23e2ed1"><span><a href="https://microsoft-my.sharepoint.com/:w:/p/bhamv/EaEyzOFLSslOt6umo7ixtBMBhNcr1lj1RDCHCdAyitC-NA?e=ZGoxEr" target="_blank"> About us </a></span></button>
+
 
 <script>
+    var yetVisited = localStorage['visited'];
     $(document).ready(function () {
+        
         $(".w3-bar-block a").removeClass("w3-blue");
-        $(".w3-bar-block a:nth-child(5)").addClass("w3-blue");
+        $(".w3-bar-block a:nth-child(4)").addClass("w3-blue");
+        //$("#teamID").val($("#teams").val());
+        if (yetVisited == null) {
+            localStorage['visited'] = $("#teams").val();
+        }
+        else
+            $("#teams").val(localStorage['visited']);
+//        document.getElementById("idtools").href = "/Home/Tools?id=" + $("#teamID").val();
+        document.getElementById("idtools").href = "/Home/Tools?id=" + localStorage['visited'];
+
+        document.getElementById("idRes").href = "/Home/Resources1?id=" + localStorage['visited'];
+        document.getElementById("idTrain").href = "/Home/Training?id=" + localStorage['visited'];
+    });
+    $("#teams").change(function () {
+        //$("#teamID").val($('option:selected', $(this)).val());
+        localStorage['visited'] = $(this).val();
+        document.getElementById("idtools").href = "/Home/Tools?id=" + localStorage['visited'];
+        document.getElementById("idRes").href = "/Home/Resources1?id=" + localStorage['visited'];
+        document.getElementById("idTrain").href = "/Home/Training?id=" + localStorage['visited'];
+
     });
 </script>

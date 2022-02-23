@@ -3,54 +3,40 @@
 }
 
 <div style="margin-top:20px;font:white">
-    <h3>DDX Templates</h3>
-    <div style="margin-right: 24%;" class="button" id="reset"><a href="/">Reset</a></div>
-    <div style="margin-right: 15.5%;" class="button" id="copy" onclick="copyText('.note-editable')"><a href="#">Copy</a></div>
-    <div style="margin-right: 33%;" class="button" id="analysis"><a href="#">Show Problem Analysis</a></div>
-    @*<div class="button" id="ddxnewtab"><a href="/" target="_blank">New Template</a></div>*@
-    
-    <div class="w3-dropdown-hover" style="left: 60%;">
-        <ul class="nav navbar-nav hovermenu" style="float: right; margin-right: -43%;">
-            <li>
-                <a style="background-color: #2196F3; font-family: 'Source Sans Pro', sans-serif; font-size: 18px; padding: 9px 25px; height: 38px; margin-top: -57px; border-radius: 5px; word-spacing: 2px; float: right; z-index: 4; color: white; margin-right: -173%; ">Templates</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border" style="overflow: auto; border-radius: 10px; padding: 6px 6px;">
-                    @*<div style="width: 340px; max-height: 340px;">
-            <table>
-                <tr><td>&nbsp; <b>EST</b></td><td> :</td> <td>)</td></tr>
-                <tr><td>&nbsp; <b>PST</b></td><td> :</td> <td>)</td></tr>
-                <tr><td>&nbsp; <b>CST</b></td><td> :</td> <td>)</td></tr>
-                <tr><td>&nbsp; <b>MST</b></td><td> :</td> <td>")</td></tr>
-                <tr><td>&nbsp; <b>IST</b></td><td> :</td> <td></td></tr>
-            </table>
-            <hr />
-            <table>
-                @foreach (var item in TimeZoneInfo.GetSystemTimeZones())
-                {
-                    <tr><td><b>@item.StandardName </b></td><td>:</td><td style="width: 37%"></td></tr>
-                }
-            </table>
+    <h3>My Assistant</h3>
+    <table style="float:right">
+        <tr>
+            <td>
+                <div class="button" id="reset" style=""><a href="/" style="text-decoration:none">Reset</a></div>
+            </td>
+            &nbsp;
+            <td>
+                <div style="width: max-content;" class="button" id="analysis"><a href="#" style="text-decoration: none;">Problem Analysis</a></div>
+            </td>
+            <td>
+                <div class="button dropdown" style="cursor:pointer; color:white">
+                    Template
+                    <div class="dropdown-content" style="left:-40px;top:38px">
+                        <a id="temp1" href="#">Template 1</a>
+                        <a id="temp2" href="#">Template 2</a>
+                        <a id="temp3" href="#">Template 3</a>
 
-        </div>*@
-                    <div class="w3-bar-block" style="text-decoration:none">
-                        <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a>
-                        <a href="/Home/Dashboard" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; Dashboard</a>
-                        <a href="/" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>&nbsp; Home</a>
-                        <a href="#" id="quickAssist" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp; Quick Assist</a>
-                        <a href="/Home/Resources" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>&nbsp; Resources</a>
-                        <a href="/Home/Tools" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Tools Documentation</a>
-                        <a href="/Home/SDK" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Teams SDK</a>
-                        <br><br>
                     </div>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </td>
 
-    <input class="clipboard hidden" />
-    <div id="summernote">
+        </tr>
+    </table>
+    <span class="tooltiptext1">Share this link with customer. https://aka.ms/qawebsharer </span>
+    
+    <link href="~/Content/rte_theme_default.css" rel="stylesheet" />
+    <script src="~/Scripts/rte.js"></script>
+    <script src="~/Scripts/all_plugins.js"></script>
+
+    <form method="post">
+        <textarea id="mytextarea" name="mytextarea">
         <p>
             PROBLEM STATEMENT:
-        </p><p>
         </p><p>
             **************************
         </p><p>
@@ -64,7 +50,6 @@
         </p><p><br></p><p>
         </p><p>
             CASE SUMMARY:
-        </p><p>
         </p><p>
             *******************
         </p><p>
@@ -91,8 +76,10 @@
         </p><p>
             Articles for reference:
         </p>
-    </div>
-    <div id="hiddenDiv" style="font-family: verdana;" hidden>
+    </textarea>
+    </form>
+
+    <div id="hiddenDiv" hidden>
         <h2>Problem Analysis Quadrant</h2>
         <table>
             <tr>
@@ -121,50 +108,14 @@
                 <td><textarea></textarea></td>
             </tr>
         </table>
+        <a href="https://www.youtube.com/watch?v=dUtoOUWnJY0" target="_blank">Problem Analysis - Sample Video</a>
     </div>
 </div>
 <script>
-    function copyText(e) {
-        var textToCopy = document.querySelector(e);
-        var textBox = document.querySelector(".clipboard");
-        navigator.clipboard.writeText(textToCopy.innerHTML);
-        Export2Word(textToCopy.innerHTML, "C:\temp")
-    }
-    function Export2Word(element, filename = '') {
-        var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
-        var postHtml = "</body></html>";
-        var html = preHtml + document.getElementById(element).innerHTML + postHtml;
-
-        var blob = new Blob(['\ufeff', html], {
-            type: 'application/msword'
-        });
-
-        // Specify link url
-        var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
-
-        // Specify file name
-        filename = filename ? filename + '.doc' : 'document.doc';
-
-        // Create download link element
-        var downloadLink = document.createElement("a");
-
-        document.body.appendChild(downloadLink);
-
-        if (navigator.msSaveOrOpenBlob) {
-            navigator.msSaveOrOpenBlob(blob, filename);
-        } else {
-            // Create a link to the file
-            downloadLink.href = url;
-
-            // Setting the file name
-            downloadLink.download = filename;
-
-            //triggering the function
-            downloadLink.click();
-        }
-
-        document.body.removeChild(downloadLink);
-    }
+    //$(document).ready(function () {
+    //    var myContent = tinymce.activeEditor.getContent();
+    //    alert(myContent);
+    //});
     window.onbeforeunload = function () {
         return "";
     }
@@ -172,17 +123,18 @@
         if ($("#hiddenDiv").is(":visible")) {
             $("#hiddenDiv").hide();
             $("#analysis").css("background-color", "#2196F3");
-            $("#analysis a").text("Show Problem Analysis");
         } else {
             $("#hiddenDiv").show();
             $("#analysis").css("background-color", "#d33424e8");
-            $("#analysis a").text("Hide Problem Analysis");
+            $(document).scrollTop($(document).height());
         }
     });
-    $(document).ready(function () {
-        $('#summernote').summernote({
-            tabsize: 2,
-            height: 400
-        });
+    $("#temp1,#temp2,#temp3").click(function (e) {
+        if ($(this).text() == "Template 1")
+            tinyMCE.activeEditor.setContent('<span>Template 1 Set</span>');
+        else if ($(this).text() == "Template 2")
+            tinyMCE.activeEditor.setContent('<span>Template 2 Set</span>');
+        else
+            tinyMCE.activeEditor.setContent('<span>Template 3 Set</span>');
     });
 </script>

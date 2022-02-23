@@ -7,7 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    margin-left: 20%;
+    margin-left: 26%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,14 +25,14 @@ textarea {
 }
 .button {
     background-color: #2196F3;
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     padding: 6px 25px;
-    margin-top: -41px;
+    margin-top: -36px;
     border-radius: 5px;
     word-spacing: 2px;
     float: right;
     z-index: 4;
+    margin-left: 4px;
 }
     .button a {
         color: white;
@@ -76,9 +76,10 @@ textarea {
     opacity: 1;
     right: 0;
 }
-.button1 a {
-    color: white;
-}
+    .button1 a {
+        color: white;
+        text-decoration: none;
+    }
 #hiddenDiv > table tr td, #hiddenDiv > table tr th {
     border: Solid 1px gray;
     text-align: center;
@@ -147,10 +148,11 @@ input[type=submit]:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    font-size:smaller;
 }
 
 .dropdown-content a {
@@ -170,4 +172,89 @@ input[type=submit]:hover {
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+.w3-bar-block a{
+    text-decoration:none;
+}
+.training {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 96%;
+    height: 84px;
+    
+}
+
+.training:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  
+}
+
+html, body, .body-content {
+    height: 100%;
+    width: 92%;
+    /*margin: 0;*/
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+table.topMenu> tr >td{
+    width:1%;
+    padding: 12px;
+}
+@media (min-width: 992px) {
+    .w3-sidebar {
+        display: block;
+    }
+}
+.tooltip1 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltiptext {
+        visibility: hidden;
+        width: 95%;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .tooltip1:hover + .tooltiptext {
+        visibility: visible;
+    }
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltiptext1 {
+    visibility: hidden;
+    width: 95%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip2:hover + .tooltiptext1 {
+    display:block;
 }

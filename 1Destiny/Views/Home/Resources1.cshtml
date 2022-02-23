@@ -1,0 +1,24 @@
+﻿@model IEnumerable<_1Destiny.Models.DB_Resource>
+@{
+    ViewBag.Title = "Resources";
+}
+
+<h3>Resources</h3>
+
+@foreach (var item in Model)
+{
+    <button class="button1" style="vertical-align:middle">
+        <span>
+            <a href="@item.ResourceLink" target="_blank"> @item.ResourceName </a>
+        </span>
+    </button>
+}
+
+<button class="button1" style="vertical-align: middle; background-color: #e23e2ed1"><span><a href="https://microsoft-my.sharepoint.com/:w:/p/bhamv/EaEyzOFLSslOt6umo7ixtBMBhNcr1lj1RDCHCdAyitC-NA?e=ZGoxEr" target="_blank"> About us </a></span></button>
+
+<script>
+    $(document).ready(function () {
+        $(".w3-bar-block a").removeClass("w3-blue");
+        $(".w3-bar-block a:nth-child(4)").addClass("w3-blue");
+    });
+</script>

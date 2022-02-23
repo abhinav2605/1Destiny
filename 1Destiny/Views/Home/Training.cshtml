@@ -1,0 +1,27 @@
+﻿@model IEnumerable<_1Destiny.Models.DB_Resource>
+@{
+    ViewBag.Title = "Training Videos";
+}
+
+<h3>Training videos</h3>
+
+@foreach (var item in Model)
+{
+    <div class="training">
+        <a href="@item.ResourceLink" target="_blank" style="cursor: pointer; text-decoration: none;">
+            <div style="float:left">
+                <img src="~/play.png" width="70" height="70" />
+            </div>
+            <div style="margin-left: 10%; cursor: pointer;">
+                <h4>@item.ResourceName</h4>
+            </div>
+        </a>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $(".w3-bar-block a").removeClass("w3-blue");
+        $(".w3-bar-block a:nth-child(4)").addClass("w3-blue");
+    });
+</script>

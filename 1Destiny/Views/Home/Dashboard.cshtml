@@ -3,64 +3,37 @@
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Hello</h2>
-<mgt-msal2-provider client-id="d358ef16-1960-49dc-bb61-4bfae639b9f4"></mgt-msal2-provider>
-<mgt-login></mgt-login>
-<mgt-person person-query="me" view="twoLines" person-card="hover" show-presence>
-    <template data-type="person-card">
-        <mgt-person-card inherit-details>
-            <template data-type="additional-details">
-                <mgt-get resource="/users/{{ person.id }}/profile" version="beta">
-                    <template>
-                        <div>
-                            <div data-if="positions && positions.length">
-                                <h4>Work history</h4>
-                                <div data-for="position in positions">
-                                    <b>{{ position.detail.jobTitle }}</b> ({{ position.detail.company.department }})
-                                </div>
-                                <hr />
-                            </div>
-                            <div data-if="projects && projects.length">
-                                <h4>Project history</h4>
-                                <div data-for="project in projects">
-                                    <b>{{ project.displayName }}</b>
-                                </div>
-                                <hr />
-                            </div>
-                            <div data-if="educationalActivities && educationalActivities.length">
-                                <h4>Educational Activities</h4>
-                                <div data-for="edu in educationalActivities">
-                                    <div data-if="edu.program.displayName">
-                                        <b>program:</b> {{ edu.program.displayName }}
-                                    </div>
-                                    <div data-if="edu.institution.displayName">
-                                        <b>Institution:</b> {{ edu.institution.displayName }}
-                                    </div>
-                                </div>
-                                <hr />
-                            </div>
-                            <div>
-                                <h4>Interests</h4>
-                                <span data-for="interest in interests">
-                                    {{ interest.displayName }}<span data-if="$index < interests.length - 1">, </span>
-                                </span>
-                                <hr />
-                            </div>
-                            <div data-if="languages && languages.length">
-                                <h4>Languages</h4>
-                                <span data-for="language in languages">
-                                    {{ language.displayName }}<span data-if="$index < languages.length - 1">, </span>
-                                </span>
-                            </div>
-                        </div>
-                    </template>
-                </mgt-get>
-            </template>
-        </mgt-person-card>
-    </template>
-</mgt-person>
-<mgt-people show-presence></mgt-people>
-<mgt-tasks></mgt-tasks>
+
+
+<div class="training" style="width: 18%; margin-top: 21px;">
+    <h3>Hello Abhinav</h3>
+    <p>CSS Bangalore</p>
+    <table>
+        <tr>
+            <td><b>Team </b></td>
+            <td>
+                : <select>
+                    <option value="0">Select Team</option>
+                    <option value="1" selected>VSOD</option>
+                    <option value="2">Office Core</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Skills </b></td>
+            <td>: VBA</td>
+        </tr>
+        <tr>
+            <td><b>Manager </b></td>
+            <td>
+                : <select disabled>
+                    <option value="0">Veena Jayarama</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <script>
     $(document).ready(function () {

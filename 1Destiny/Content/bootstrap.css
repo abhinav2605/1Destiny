@@ -1587,19 +1587,19 @@ pre code {
   margin-left: auto;
 }
 @media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
+    .container {
+        width: 100%;
+    }
 }
 @media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
+    .container {
+        width: 100%;
+    }
 }
 @media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
+    .container {
+        width: 100%;
+    }
 }
 .container-fluid {
   padding-right: 15px;
@@ -3550,9 +3550,9 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
-.collapse {
+/*.collapse {
   display: none;
-}
+}*/
 .collapse.in {
   display: block;
 }
@@ -4048,9 +4048,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: -1px;
 }
 .nav {
-  padding-left: 0;
+  /*padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
+  list-style: none;*/
 }
 .nav > li {
   position: relative;
@@ -4364,7 +4364,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
+    /*margin-left: -15px;*/
   }
 }
 .navbar-toggle {
