@@ -18,14 +18,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css?v=1.0" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/9lf5s97lyt3usa3yle4wzuvpurymgj5zhhfd9n2722rtngh6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        
+
         tinymce.init({
             selector: '#mytextarea',
             height: 800,
@@ -43,7 +43,8 @@
                 'removeformat',
             toolbar2: 'print preview media link| fontsizeselect forecolor backcolor emoticons | codesample',
             content_style: 'body { font-family:Segoe UI,Arial,sans-serif; font-size:14px }',
-            paste_data_images: true
+            paste_data_images: true,
+            branding: false
         });
     </script>
 
@@ -62,49 +63,41 @@
 
 </head>
 <body class="w3-light-grey" onresize="resizeScreen()">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #c0392b; border-color: lightgray ">
-        <div class="container">
+    <div class="navbar navbar-inverse" style="background-color: black; border-color: lightgray; z-index: 1030; width: 100%; max-height: 340px; position: fixed; top: 0; padding-left: 0; padding-right: 0; ">
+        <div class="container" style="width:100%">
             <div class="navbar-header" style="width: 10%;">
-                <a class="navbar-brand" href="/" style="color: black; font-weight: 500; white-space: nowrap;"><img src="/Picture1.ico" style="width: 26px;float: left;">Project 1Destiny</a>
-
+                <a class="navbar-brand" href="/" style="color: lightgray; font-weight: 500; white-space: nowrap; position: fixed;">OneDestiny</a>
             </div>
 
-            <table class="topMenu" style="float: left; margin-left: 11%;">
+            <table class="topMenu" style="float: left; margin-left: 20.5%;">
                 <tr>
                     <td>
                         <ul class="nav navbar-nav">
                             <li>
-                                <input type="number" id="caseno" style="max-width: 81%; height: 38px;" placeholder="Enter case number" min="0" max="9999999999999999" />
-                                <input type="button" id="okay" value="OK" style="width: auto; height: 41px; border-radius: 7px; background: #2196F3; color: white;">
+                                <input type="number" id="caseno" style="max-height:inherit; width: 223px; height: 38px;" placeholder="Enter case number to update title" min="0" max="9999999999999999" />
                             </li>
                         </ul>
 
                     </td>
-                    
-                    <td>
-                        <div style=" font-weight: 500; margin-left: -4%; margin-top:-3%">
-                            <ul style="padding-left: 12px; margin-bottom: 0; list-style: none;">
-                                <li>
-                                    <a href="~/TimeZoneCalc - NA.xlsx" style="color: black; text-decoration: none;">Area code finder</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-
                 </tr>
             </table>
 
         </div>
     </div>
 
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 21%; overflow-y: hidden;" id="mySidebar">
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 21%; overflow-y: hidden; min-width: fit-content;" id="mySidebar">
         <br>
         <div class="w3-bar-block">
-            <a href="/" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-globe fa-fw"></i>&nbsp; Home</a>
-            <a href="https://aka.ms/qawebhelper" target="_blank" style=" white-space: nowrap;" class="w3-bar-item w3-button w3-padding tooltip1"><i class="fa fa-diamond fa-fw"></i>&nbsp; Quick Assist Web</a> <span class="tooltiptext">Share this link with customer. https://aka.ms/qawebsharer </span>
-            <a id="tools" href="/Home/Resources" class="w3-bar-item w3-button w3-padding" style=" white-space: nowrap;"><i class="fa fa-envelope fa-fw"></i>&nbsp; Tools and Resources</a>
-            <a href="https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8eeHjSeM2dHnaQimfx6UWlUN0ZUNlI4MEdEM0wzNkZMNlZUMFk0SFpZRi4u" target="_blank" class="w3-bar-item w3-button w3-padding">&#9786; Feedback</a>
+            <a href="/" class="w3-bar-item w3-button w3-padding w3-blue1"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+            <a href="https://aka.ms/qawebhelper" target="_blank" style=" white-space: nowrap;" class="w3-bar-item w3-button w3-padding tooltip1"><span class="glyphicon glyphicon-eye-open"></span>&nbsp; Quick Assist Web</a> <span class="tooltiptext">Share this link with customer. https://aka.ms/qawebsharer </span>
+            <a id="tools" href="/Home/Resources" class="w3-bar-item w3-button w3-padding" style=" white-space: nowrap;"><i class="fa fa-wrench"></i>&nbsp; Tools and Resources</a>
+            <a href="https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8eeHjSeM2dHnaQimfx6UWlUN0ZUNlI4MEdEM0wzNkZMNlZUMFk0SFpZRi4u" target="_blank" class="w3-bar-item w3-button w3-padding"><span class="glyphicon glyphicon-comment"></span> Feedback</a>
+            <a class="w3-bar-item w3-button w3-padding clock" href="~/TimeZoneCalc - NA.xlsx" style="color: black; text-decoration: none;"><span class="glyphicon glyphicon-search"></span> Area code finder</a>
+            
             <a class="w3-bar-item w3-button w3-padding clock" id="clock"><i class="fa fa-globe"></i>&nbsp; World clock<i class="fa fa-chevron-right" aria-hidden="true" style="float:right"></i></a>
+
+
+
             @*<a href="https://www.hydra365.net/Nemo/QnASearch" target="_blank" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp; CSS Cybot</a>*@
             <div class="dropdown-content-clock" style="display:none;">
                 <div style="margin-left: 2%; overflow-y: scroll; height: 455px; ">
@@ -128,20 +121,22 @@
                     </table>
                 </div>
             </div>
-
+                
 
             @*<a href="/Home/SDK" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Teams SDK</a>*@
-            <br><br>
+            @*<br><br>*@
         </div>
     </nav>
-    <input type="hidden" id="teamID"/>
+    @*<div class="closeNavBar" onclick="w3_open()"><i class="fa fa-bars" aria-hidden="true" style="vertical-align: middle;"></i></div>*@
+    <input type="hidden" id="teamID" />
     <div class="container body-content">
+        @*<div class="closeNavBar"><i class="fa fa-bars" aria-hidden="true" style="vertical-align: middle;"></i></div>*@
         @RenderBody()
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.w3-sidebar').css("display", "block");
-            
+
         });
 
         // Get the Sidebar
@@ -162,6 +157,7 @@
 
         // Toggle between showing and hiding the sidebar, and add overlay effect
         function w3_open() {
+            alert();
             if (mySidebar.style.display === 'block') {
                 mySidebar.style.display = 'none';
                 overlayBg.style.display = "none";
@@ -171,17 +167,12 @@
             }
         }
 
-        function resizeScreen() {
-            
-        }
-
         $('#navbar').click(function () {
             $('.navbar').css("height", "32%");
 
         });
 
-        $("#okay").click(function () {
-            //alert(1);
+        $("#caseno").keyup(function () {
             document.title = $("#caseno").val() + " - 1Destiny";
         });
 

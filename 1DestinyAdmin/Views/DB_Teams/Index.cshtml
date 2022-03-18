@@ -1,0 +1,42 @@
+﻿@model IEnumerable<_1DestinyAdmin.DB_Teams>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Teams</h2>
+
+<button class="button1">
+    <span>
+        @Html.ActionLink("Add new team", "Create")
+    </span>
+</button>
+   
+<button class="button1">
+    <span>
+        @Html.ActionLink("Back to resource list", "Index", "DB_Resource")
+    </span>
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

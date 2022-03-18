@@ -23,8 +23,12 @@ select,
 textarea {
     max-width: 280px;
 }
+.w3-blue1 {
+    background-color: #337ab7; 
+        color:white;
+}
 .button {
-    background-color: #2196F3;
+    background-color: #337ab7;
     font-size: 18px;
     padding: 6px 25px;
     margin-top: -36px;
@@ -40,7 +44,7 @@ textarea {
 .button1 {
     display: inline-block;
     border-radius: 4px;
-    background-color: #2196F3;
+    background-color: #337ab7;
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -104,7 +108,7 @@ textarea {
 
 input[type=text], textarea, input[type=number] {
     width: 100%;
-    padding: 12px 20px;
+    padding: 0px 6px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -257,4 +261,14 @@ table.topMenu> tr >td{
 
 .tooltip2:hover + .tooltiptext1 {
     display:block;
+}
+.closeNavBar {
+    background-color: #866ec7;
+    margin-top: 1.5%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 0.5%;
+    cursor: pointer;
 }

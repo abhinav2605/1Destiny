@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DestinyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view '1Destiny.dbo.DB_Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DB_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceCategory" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DB_Resource">
+          <Key>
+            <PropertyRef Name="Sl No." />
+          </Key>
+          <Property Name="Sl No." Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResourceLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResourceID" Type="smallint" Nullable="false" />
+          <Property Name="ResourceImage" Type="nvarchar" MaxLength="400" />
+          <Property Name="TeamID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DB_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="GetResource" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="resourceid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTeams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DestinyModelStoreContainer">
+          <EntitySet Name="DB_Resource" EntityType="Self.DB_Resource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DB_Teams" EntityType="Self.DB_Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DB_Category" EntityType="Self.DB_Category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DB_Category].[ID] AS [ID], 
+    [DB_Category].[ResourceCategory] AS [ResourceCategory]
+    FROM [dbo].[DB_Category] AS [DB_Category]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DestinyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DB_Resource">
+          <Key>
+            <PropertyRef Name="Sl_No_" />
+          </Key>
+          <Property Name="Sl_No_" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourceLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourceID" Type="Int16" Nullable="false" />
+          <Property Name="ResourceImage" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="TeamID" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DB_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DB_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DB_Resource" EntityType="Self.DB_Resource" />
+          <EntitySet Name="DB_Teams" EntityType="Self.DB_Teams" />
+          <EntitySet Name="DB_Category" EntityType="Self.DB_Category" />
+          <FunctionImport Name="GetResource" ReturnType="Collection(DestinyModel.GetResource_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="resourceid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeams" ReturnType="Collection(DestinyModel.GetTeams_Result)" />
+        </EntityContainer>
+        <ComplexType Name="GetResource_Result">
+          <Property Type="Int16" Name="Sl_No_" Nullable="false" />
+          <Property Type="String" Name="ResourceName" Nullable="false" />
+          <Property Type="String" Name="ResourceLink" Nullable="false" />
+          <Property Type="Int16" Name="ResourceID" Nullable="false" />
+          <Property Type="String" Name="ResourceImage" Nullable="true" MaxLength="400" />
+          <Property Type="Int16" Name="TeamID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetTeams_Result">
+          <Property Type="Int16" Name="ID" Nullable="false" />
+          <Property Type="String" Name="TeamName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DestinyModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="DB_Resource">
+            <EntityTypeMapping TypeName="DestinyModel.DB_Resource">
+              <MappingFragment StoreEntitySet="DB_Resource">
+                <ScalarProperty Name="Sl_No_" ColumnName="Sl No." />
+                <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+                <ScalarProperty Name="ResourceLink" ColumnName="ResourceLink" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="ResourceImage" ColumnName="ResourceImage" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DB_Teams">
+            <EntityTypeMapping TypeName="DestinyModel.DB_Teams">
+              <MappingFragment StoreEntitySet="DB_Teams">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DB_Category">
+            <EntityTypeMapping TypeName="DestinyModel.DB_Category">
+              <MappingFragment StoreEntitySet="DB_Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ResourceCategory" ColumnName="ResourceCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetResource" FunctionName="DestinyModel.Store.GetResource">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DestinyModel.GetResource_Result">
+                <ScalarProperty Name="Sl_No_" ColumnName="Sl No." />
+                <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+                <ScalarProperty Name="ResourceLink" ColumnName="ResourceLink" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="ResourceImage" ColumnName="ResourceImage" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTeams" FunctionName="DestinyModel.Store.GetTeams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DestinyModel.GetTeams_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

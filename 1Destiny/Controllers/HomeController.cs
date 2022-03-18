@@ -55,7 +55,7 @@ namespace _1Destiny.Controllers
         public void QuickAssist()
         {
             Process p = new Process();
-            p.StartInfo.FileName = "C:\\Windows\\System32\\quickassist.exe";
+            p.StartInfo.FileName = "ms-quick-assist:";
             p.Start();
         }
         

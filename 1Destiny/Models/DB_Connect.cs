@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using _1Destiny.Models;
 using System.Data;
-using System.Collections.Generic;
 
 namespace _1Destiny
 {

@@ -1,0 +1,79 @@
+﻿@model _1DestinyAdmin.DB_Resource
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DB_Resource</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Resource Category")
+        </dt>
+
+        <dd>
+            @if (Model.ResourceID == 1)
+            {
+                <span>Tools</span>
+            }
+            else if (Model.ResourceID == 2)
+            {
+                <span>Resources</span>
+            }
+            else
+            {
+                <span>Training Videos</span>
+            }
+            @*@Html.DisplayFor(model => model.ResourceID)*@
+            </ dd >
+
+            @*<dt>
+            @Html.DisplayNameFor(model => model.ResourceImage)
+        </dt>*@
+
+            @*<dd>
+            @Html.DisplayFor(model => model.ResourceImage)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayName("Team Name")
+        </dt>
+
+        <dd>
+            @if (Model.TeamID == 1)
+            {
+                <span>VSOD Core</span>
+            }
+            else if (Model.TeamID == 2)
+            {
+                <span>VSOD</span>
+            }
+            @*@Html.DisplayFor(model => model.TeamID)*@
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sl_No_ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

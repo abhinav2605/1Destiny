@@ -1,0 +1,110 @@
+﻿@model IEnumerable<_1DestinyAdmin.DB_Resource>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Resource List</h2>
+<table>
+    <tr>
+        <td>
+            <select id="selectResource" onchange="myFunction()" class='form-control'>
+                <option>Tools</option>
+                <option>Resources</option>
+                <option>Training Videos</option>
+            </select>
+        </td>
+        <td>
+            <select id="selectTeams" onchange="myFunction()" class='form-control'>
+                <option>Office Core</option>
+                <option>VSOD</option>
+            </select>
+        <td>
+    </tr>
+</table>
+<p>
+    <button class="button1">
+        <span>
+            @Html.ActionLink("Add new resource", "Create")
+        </span>
+    </button>
+    <button class="button1">
+        <span>
+            @Html.ActionLink("Manage Teams", "Index","DB_Teams")
+        </span>
+    </button>
+</p>
+<table id="myTable" class="table" style="table-layout: fixed; width: 100%">
+    <tr>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.ResourceName)
+        </th>
+        <th width="50%">
+            @Html.DisplayNameFor(model => model.ResourceLink)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.ResourceID)
+        </th>
+        <th >
+            @Html.DisplayNameFor(model => model.TeamID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ResourceName)
+    </td>
+    <td style="word-wrap: break-word">
+        @Html.DisplayFor(modelItem => item.ResourceLink)
+    </td>
+    <td>
+        @if (item.ResourceID == 1)
+        {
+            <p>Tools</p>}
+        else if (item.ResourceID == 2)
+        {
+            <p>Resources</p>}
+        else
+        {
+            <p>Training Videos</p>}
+    </td>
+    <td>
+        @if (item.TeamID == 1) {
+        <p>Office Core</p>}
+        else{
+        <p>VSOD</p>}
+        @*@Html.DisplayFor(modelItem => item.TeamID)*@
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Sl_No_ }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Sl_No_ }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Sl_No_ })
+    </td>
+    
+</tr>
+}
+
+</table>
+<script>
+    $('#myTable tbody tr').each(function () {
+
+        var sel = $(this);
+        var txt = sel.find('td:eq(2)').text();
+        if (searchterm != 'all') {
+
+
+            if (txt.indexOf(searchterm) === -1) {
+                $(this).hide();
+            }
+            else {
+                $(this).show();
+            }
+        }
+        else {
+            $('#table11 tbody tr').show();
+        }
+    });
+</script>
